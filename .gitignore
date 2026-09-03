@@ -53,3 +53,38 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# ========================================
+# ADIÇÕES PARA O SEU AMBIENTE DE ESTUDOS
+# ========================================
+
+# Java
+*.class
+*.jar
+*.war
+/bin/
+/out/
+/build/
+.metadata/
+
+# Haskell
+*.hi
+*.chi
+*.chs.h
+.stack-work/
+dist-newstyle/
+
+# Assembly (Listagens e binários extras)
+*.lst
+*.bin
+
+# Editores de Código (VS Code, Geany, IntelliJ, Eclipse)
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Arquivos de Sistema Operacional (Geral)
+.DS_Store
+Thumbs.db
