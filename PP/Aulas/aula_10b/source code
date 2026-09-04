@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main(void)
+{
+    Contato *vContatos;
+    int quant;
+    
+    printf("\nQuantos contatos deseja cadastrar? ");
+    scanf("%d", &quant);
+    
+    vContatos = (Contato *) malloc(sizeof(Contato) * quant);
+    
+    int i;
+    for (i=0; i<quant; i++) {
+        printf("\nContato %d - digite nome: ", i+1);
+        
+        vContatos[i].nome = (char *) malloc(sizeof(char)*50);
+        scanf(" %50[^\n]%*c", vContatos[i].nome);
+        
+        printf("\nContato %d - digite endereco: ", i+1);
+        scanf(" %50[^\n]%*c", vContatos[i].endereco);
+    }
+
+    return 0;
+}

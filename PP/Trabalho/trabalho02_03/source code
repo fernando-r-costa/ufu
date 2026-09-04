@@ -1,0 +1,37 @@
+/* Autores:
+    Fernando Rodrigues Costa
+    Orlando Luiz de Carvalho Topam
+    Vinícius Albino Torres Lima
+*/
+
+#include <stdio.h>
+#include <math.h>
+
+int main () {
+    
+    typedef struct Cartesiano {
+        
+        float x, y;
+        
+    } cartesiano;
+    
+    typedef struct Polar {
+        
+        float r, theta;
+        
+    } polar;
+    
+    polar p;
+    
+    scanf("%f %f", &p.r, &p.theta);
+    
+    cartesiano c;
+    
+    c.x = p.r*cos(p.theta);
+    c.y = p.r*sin(p.theta);
+    
+    printf("%.2f %.2f", c.x, c.y);
+    
+    return 0;
+
+}

@@ -1,0 +1,29 @@
+/* Autores:
+    Fernando Rodrigues Costa
+    Orlando Luiz de Carvalho Topam
+    Vinícius Albino Torres Lima
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int funcao(int x, int n) {
+   if(n == 0) {
+       return 1;
+   } else {
+       return x * funcao(x, n-1);
+   }
+}
+
+int main()
+{   
+    int x, n;
+    
+    scanf("%d %d", &x, &n);
+    
+    if(x < 0 || n < 0) {
+        printf("Erro");
+    } else {
+        printf("%d", funcao(x, n));   
+    }
+}

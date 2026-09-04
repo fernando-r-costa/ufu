@@ -1,0 +1,26 @@
+/* Autores:
+    Fernando Rodrigues Costa
+    Orlando Luiz de Carvalho Topam
+    Vinícius Albino Torres Lima
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void funcao(int *a, int *b) {
+   if(*a < *b) {
+       int c = *a;
+       *a = *b;
+       *b = c;
+   }
+}
+
+int main()
+{   
+    int a, b;
+    
+    scanf("%d %d", &a, &b);
+    
+    funcao(&a, &b);
+    printf("%d %d", a, b);
+}

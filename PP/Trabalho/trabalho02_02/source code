@@ -1,0 +1,34 @@
+/* Autores:
+    Fernando Rodrigues Costa
+    Orlando Luiz de Carvalho Topam
+    Vinícius Albino Torres Lima
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{   
+    FILE *file = fopen("arq.txt", "r");
+    
+    if(file == NULL) {
+        printf("Problema em abrir o arquivo!!!");
+        exit(1);
+    }
+    
+    char str[256];
+    
+    fscanf(file, "%255[^\n]", str);
+   
+    
+    for(int i = 0; str[i] != '\0'; i++) {
+        if(str[i] >= 'a' && str[i] <= 'z') {
+            str[i] = (str[i] - 'a' + 3) %26 + 'a';
+            
+        } else if (str[i] >= 'A' && str[i] <= 'Z') {
+            str[i] = (str[i] - 'A' + 3) %26 + 'A';
+        }
+    }
+    
+    printf("%s", str);
+}
