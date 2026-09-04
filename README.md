@@ -1,4 +1,3 @@
-````md
 # 🎓 UFU - Códigos de Disciplinas
 
 Repositório central para armazenamento, organização e versionamento de trabalhos práticos, listas de exercícios e códigos desenvolvidos durante o curso de Ciência da Computação na Universidade Federal de Uberlândia (UFU).
@@ -26,9 +25,7 @@ ufu/
 ├── POO/           # Programação Orientada a Objetos
 ├── PP/            # Programação Procedimental
 └── SD/            # Sistemas Digitais
-````
-
-Cada diretório é utilizado para armazenar códigos, listas de exercícios, trabalhos práticos e demais materiais relacionados à respectiva disciplina.
+```
 
 ## 🚀 Como Executar
 
@@ -92,7 +89,7 @@ ghci arquivo.hs
 
 A forma de montagem e execução dependerá da arquitetura, montador e ferramentas adotadas durante a disciplina.
 
-As instruções específicas serão mantidas dentro do diretório `AOC/` conforme necessário.
+As instruções específicas serão adicionadas ao diretório `AOC/` conforme o conteúdo da disciplina avançar.
 
 ## 🔍 Análise de Memória em C
 
@@ -102,7 +99,7 @@ Para verificar vazamentos de memória com o Valgrind:
 valgrind --leak-check=full ./programa
 ```
 
-Uma análise mais detalhada pode ser executada com:
+Para uma análise mais detalhada:
 
 ```bash
 valgrind --leak-check=full --show-leak-kinds=all ./programa
@@ -110,20 +107,17 @@ valgrind --leak-check=full --show-leak-kinds=all ./programa
 
 ## 🛠️ Ambiente de Desenvolvimento
 
-O repositório pode ser utilizado diretamente através do **GitHub Codespaces**, permitindo compilar e executar os códigos em ambiente Linux sem depender da configuração local da máquina.
+O repositório pode ser utilizado através do **GitHub Codespaces**, permitindo compilar e executar os códigos em ambiente Linux sem depender da configuração local da máquina.
 
-As ferramentas utilizadas poderão variar de acordo com cada disciplina, incluindo:
+Ferramentas utilizadas ao longo das disciplinas:
 
-* GCC
-* GHC / GHCi
-* Java Development Kit (JDK)
-* Valgrind
-* Ferramentas de Assembly definidas durante AOC
+- GCC
+- GHC / GHCi
+- Java Development Kit (JDK)
+- Valgrind
+- Ferramentas de Assembly definidas durante AOC
 
 ## 👨‍💻 Autor
 
-**Fernando Costa**
+**Fernando Costa**  
 Estudante de Ciência da Computação — Universidade Federal de Uberlândia (UFU)
-
-```
-```
