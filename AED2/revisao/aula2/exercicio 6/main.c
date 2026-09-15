@@ -48,6 +48,8 @@ int main() {
         
         novoNo->proximo = vetor[index];
         vetor[index] = novoNo;
+
+        printf(" -> Valor %d inserido na lista do vetor[%d]\n", valor, index);
     }
 
     int maiorValor = encontraMaior(vetor, 10);
