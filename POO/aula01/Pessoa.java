@@ -12,4 +12,17 @@ public class Pessoa {
         
         return imc; 
     }
+
+    // Compara IMCs
+    public Pessoa compararIMC(Pessoa outraP) {
+
+        double imc1 = this.calcularIMC();
+        double imc2 = outraP.calcularIMC();
+
+        if (imc1 < imc2) {
+            return outraP;
+        } else {
+            return this;
+        }
+    }
 }
