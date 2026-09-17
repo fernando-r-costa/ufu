@@ -28,7 +28,7 @@ public class Main {
         // Conta especial consegue negativar
         boolean sacaEspecial = contaEspecial.retirar(150.00);
         System.out.println("Retirada de R$ 150,00 na conta de " + contaEspecial.getNomeCliente() + ": " + (sacaEspecial ? "Sucesso" : "Negada"));
-        System.out.println("O saldo da conta de" + contaEspecial.getNomeCliente() + "é de: " + contaEspecial.getSaldo());
+        System.out.println("O saldo da conta de " + contaEspecial.getNomeCliente() + " é de: " + contaEspecial.getSaldo());
 
         // Transferência (Testando a regra do saldo negativo)
         System.out.println("\n--- Transferência ---");
