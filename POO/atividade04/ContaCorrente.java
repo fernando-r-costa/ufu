@@ -1,4 +1,4 @@
-package POO.atividade03;
+package POO.atividade04;
 
 public class ContaCorrente {
     // Dados da conta corrente
@@ -6,9 +6,18 @@ public class ContaCorrente {
     double saldo;
     boolean especial;
 
+    //Construtor
+    public ContaCorrente(Cliente titular, boolean especial) {
+        this.titular = titular;
+        this.especial = especial;
+        this.saldo = 0.0;
+        this.extrato = new String[100];
+        this.contador = 0;
+    }
+
     // Extrato
-    String[] extrato = new String[100];
-    int contador = 0;
+    String[] extrato;
+    int contador;
 
     // Métodos dos dados da conta corrente
     Cliente getTitular() {
