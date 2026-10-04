@@ -19,4 +19,6 @@ int main() {
         printf("%d ", v[i]);
     }
     printf("\n");
+
+    return 0;
 }

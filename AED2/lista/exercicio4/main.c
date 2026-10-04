@@ -3,7 +3,7 @@
 int main() {
 	int v[6] = {1, 2, 4, 5, 6};
     int qte = 5;
-    int extra = 3;
+    int extra = 7;
 
     int i = qte - 1;
 
