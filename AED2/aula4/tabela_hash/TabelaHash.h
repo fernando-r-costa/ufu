@@ -1,5 +1,5 @@
-//Potências de dois devem ser evitadas
-//deve ser um número primo distante de pequenas potências de dois
+//Potï¿½ncias de dois devem ser evitadas
+//deve ser um nï¿½mero primo distante de pequenas potï¿½ncias de dois
 struct aluno{
     int matricula;
     char nome[30];
@@ -15,6 +15,8 @@ int insereHash_SemColisao(Hash* ha, struct aluno al);
 int buscaHash_SemColisao(Hash* ha, int mat, struct aluno* al);
 int insereHash_EnderAberto(Hash* ha, struct aluno al);
 int buscaHash_EnderAberto(Hash* ha, int mat, struct aluno* al);
+int removeHash_EnderAberto(Hash* ha, int mat);
+int insereHash_Contando(Hash* ha, struct aluno al, int* colisoes);
 /*
 int chaveDivisao(int chave, int TABLE_SIZE);
 int chaveDobra(int chave, int TABLE_SIZE);

@@ -4,9 +4,11 @@
 //#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "TabelaHash.h" //inclui os Protótipos
+#include "TabelaHash.h" //inclui os Protï¿½tipos
 
-//Definição do tipo Hash
+#define DELETED ((struct aluno*) -1)
+
+//Definiï¿½ï¿½o do tipo Hash
 struct hash{
     int qtd, TABLE_SIZE;
     struct aluno **itens;
@@ -33,7 +35,7 @@ void liberaHash(Hash* ha){
     if(ha != NULL){
         int i;
         for(i=0; i < ha->TABLE_SIZE; i++){
-            if(ha->itens[i] != NULL)
+            if(ha->itens[i] != NULL && ha->itens[i] != DELETED)
                 free(ha->itens[i]);
         }
         free(ha->itens);
@@ -69,7 +71,7 @@ int chaveDobra(int chave, int TABLE_SIZE){
 }
 
 //==============================================
-//Hash Multiplicação
+//Hash Multiplicaï¿½ï¿½o
 //int chave = valorString(nome);
 //pos = chaveDobra(chave, TABLE_SIZE)
 int chaveMultiplicacao(int chave, int TABLE_SIZE){
@@ -80,7 +82,7 @@ int chaveMultiplicacao(int chave, int TABLE_SIZE){
 }
 
 //==============================================
-// Insere e busca sem tratamento de colisão
+// Insere e busca sem tratamento de colisï¿½o
 //==============================================
 int insereHash_SemColisao(Hash* ha, struct aluno al){
     if(ha == NULL || ha->qtd == ha->TABLE_SIZE)
@@ -113,7 +115,7 @@ int buscaHash_SemColisao(Hash* ha, int mat, struct aluno* al){
 
 
 //==============================================
-// Insere e busca com tratamento de colisão: Endereçamento Aberto
+// Insere e busca com tratamento de colisï¿½o: Endereï¿½amento Aberto
 //==============================================
 int sondagemLinear(int pos, int i, int TABLE_SIZE){
     return ((pos + i) & 0x7FFFFFFF) % TABLE_SIZE;
@@ -139,10 +141,10 @@ int insereHash_EnderAberto(Hash* ha, struct aluno al){
     int i, pos, newPos;
     pos = chaveDivisao(chave,ha->TABLE_SIZE);
     for(i=0; i < ha->TABLE_SIZE; i++){
-        newPos = sondagemLinear(pos,i,ha->TABLE_SIZE);
+        //newPos = sondagemLinear(pos,i,ha->TABLE_SIZE);
         //newPos = sondagemQuadratica(pos,i,ha->TABLE_SIZE);
-        //newPos = duploHash(pos,chave,i,ha->TABLE_SIZE);
-        if(ha->itens[newPos] == NULL){
+        newPos = duploHash(pos,chave,i,ha->TABLE_SIZE);
+        if(ha->itens[newPos] == NULL || ha->itens[newPos] == DELETED){
             struct aluno* novo;
             novo = (struct aluno*) malloc(sizeof(struct aluno));
             if(novo == NULL)
@@ -163,16 +165,67 @@ int buscaHash_EnderAberto(Hash* ha, int mat, struct aluno* al){
     int i, pos, newPos;
     pos = chaveDivisao(mat,ha->TABLE_SIZE);
     for(i=0; i < ha->TABLE_SIZE; i++){
-        newPos = sondagemLinear(pos,i,ha->TABLE_SIZE);
+        //newPos = sondagemLinear(pos,i,ha->TABLE_SIZE);
         //newPos = sondagemQuadratica(pos,i,ha->TABLE_SIZE);
-        //newPos = duploHash(pos,mat,i,ha->TABLE_SIZE);
+        newPos = duploHash(pos,mat,i,ha->TABLE_SIZE);
         if(ha->itens[newPos] == NULL)
             return 0;
 
-        if(ha->itens[newPos]->matricula == mat){
+        if(ha->itens[newPos] != DELETED && ha->itens[newPos]->matricula == mat){
             *al = *(ha->itens[newPos]);
             return 1;
         }
+    }
+    return 0;
+}
+
+int removeHash_EnderAberto(Hash* ha, int mat){
+    if(ha == NULL)
+        return 0;
+
+    int i, pos, newPos;
+    pos = chaveDivisao(mat, ha->TABLE_SIZE);
+    
+    for(i=0; i < ha->TABLE_SIZE; i++){
+        // Use a sondagem que vocÃª preferir aqui:
+        newPos = duploHash(pos, mat, i, ha->TABLE_SIZE); 
+
+        if(ha->itens[newPos] == NULL)
+            return 0; // Se achou NULL, o aluno nÃ£o existe.
+
+        // Se achou o aluno (e ignora os que estÃ£o marcados como DELETED)
+        if(ha->itens[newPos] != DELETED && ha->itens[newPos]->matricula == mat){
+            free(ha->itens[newPos]);      // 1. Libera a memÃ³ria do aluno
+            ha->itens[newPos] = DELETED;  // 2. Coloca a placa de DELETADO no lugar
+            ha->qtd--;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int insereHash_Contando(Hash* ha, struct aluno al, int* colisoes){
+    if(ha == NULL || ha->qtd == ha->TABLE_SIZE)
+        return 0;
+
+    int chave = al.matricula;
+    int i, pos, newPos;
+    pos = chaveDivisao(chave, ha->TABLE_SIZE);
+    
+    for(i=0; i < ha->TABLE_SIZE; i++){
+        // Escolha qual estratÃ©gia testar:
+        newPos = duploHash(pos, chave, i, ha->TABLE_SIZE);
+
+        if(ha->itens[newPos] == NULL || ha->itens[newPos] == DELETED){
+            struct aluno* novo = (struct aluno*) malloc(sizeof(struct aluno));
+            if(novo == NULL) return 0;
+            *novo = al;
+            ha->itens[newPos] = novo;
+            ha->qtd++;
+            return 1;
+        }
+        
+        (*colisoes)++;
     }
     return 0;
 }
