@@ -8,6 +8,15 @@ public class Participante {
     }
 
     public String getCertificado () {
-        return "Declaramos que " + nome + "participou do evento: " + evento.getNome();
+        return "Declaramos que " + nome + " participou do evento: " + evento.getNome() + ". ";
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Evento getEvento() {
+        return evento;
+    }
+
 }

@@ -8,7 +8,7 @@ public class Palestrante extends Participante {
 
     @Override
     public String getCertificado() {
-        return super.getCertificado() + " tendo ministrado a palestra intitulada: "
+        return super.getCertificado() + "\nTendo ministrado a palestra intitulada: "
                 + tituloPalestra;
     }
     public String getTituloPalestra () {

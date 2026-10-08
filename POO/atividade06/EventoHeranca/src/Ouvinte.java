@@ -13,7 +13,7 @@ public class Ouvinte extends Participante {
 
     @Override
     public String getCertificado() {
-        return super.getCertificado() + " e assistiu as seguintes palestras: " + getPalestras();
+        return super.getCertificado() + "\nAssistiu as seguintes palestras: " + getPalestras();
     }
 
     private String getPalestras () {
