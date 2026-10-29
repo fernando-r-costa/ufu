@@ -1,4 +1,4 @@
-package POO.atividade07;
+package POO.atividade07.exercicio1;
 
 public class Subtraction extends Expression {
     private final Expression left;

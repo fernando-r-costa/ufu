@@ -1,4 +1,4 @@
-package POO.atividade07;
+package POO.atividade07.exercicio1;
 
 public class Negative extends Expression {
     private final Expression expression;
