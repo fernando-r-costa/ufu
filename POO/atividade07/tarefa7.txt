@@ -1,0 +1,33 @@
+Tarefa 07 - Classes Abstratas - Interfaces
+Vence hoje às 23:59
+•
+Vários envios permitidos
+•
+Fecha hoje às 23:59
+Instruções
+Complemente o programa escrito em sala de aula sobre as Expressões, criando expressões para multiplicação, divisão, subtração e negativo. Faça um main que crie e mostre os resultados da expressão: (8 + 3) - (- (7 * 4))
+Implemente um módulo de notificações para um sistema corporativo. O objetivo é permitir que diferentes tipos de alerta (como falhas em servidores, avisos de segurança, etc.) sejam enviados por diversos canais de comunicação, como E-mail, SMS e Push Notification.
+
+A gerência da empresa solicitou que o sistema seja flexível e extensível, permitindo que novos canais de notificação sejam adicionados no futuro sem alterar o código já existente.
+Crie uma interface chamada Notificador com um único método:
+
+void enviar(String mensagem);
+Implemente três classes diferentes que representem canais de notificação, todas implementando a interface Notificador:
+
+NotificadorEmail: imprime no console que está enviando um e-mail.
+
+NotificadorSMS: imprime que está enviando um SMS.
+
+NotificadorPush: imprime que está enviando uma push notification.
+
+Implemente uma classe ServicoAlerta que tenha um atributo do tipo Notificador, passado via construtor, e um método:
+
+void alertaCritico(String mensagem);
+Esse método deve usar o notificador para enviar a mensagem com um prefixo " Alerta Crítico: ".
+
+Na classe principal (main):
+
+Crie três instâncias de ServicoAlerta, cada uma com um tipo diferente de Notificador.
+
+Envie mensagens de alerta para cada uma.
+
